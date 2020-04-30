@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block meta %}{% endblock %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+</head>
+
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <!-- Header -->
+                <header id="header">
+                    <a href="/" class="logo"><strong>Word Centre - For All Your Word Puzzle Needs</strong></a>
+                    <!-- <ul class="icons">
+                        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a>
+                        </li>
+                        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    </ul> -->
+                </header>
+                <!-- Banner -->
+                {% block content %}{% endblock %}
+                <!-- Section -->
+            </div>
+        </div>
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <!-- <li><a href="/">Homepage</a></li> -->
+                        <li><a href="anagram">Anagram Solver</a></li>
+                        <li><a href="missing-letters">Missing Letters</a></li>
+                        <li><a href="wordsinword">Find Words In A Word</a></li>
+                        <li><a href="pig-latin">Pig Latin Converter</a></li>
+                    </ul>
+                </nav>
+                <!-- Section -->
+                <section>
+                    <header class="major">
+                        <h2>Articles</h2>
+                    </header>
+                    <div class="mini-posts">
+                        <article>
+                            <a href="/" class="image"><img src="/static/img/word-center.jpg" alt="Word Center" /></a>
+                            <p>Coming soon. Articles and information about all the words you can think of.</p>
+                        </article>
+                    </div>
+                    <ul class="actions">
+                        <li><a href="/" class="button">More</a></li>
+                    </ul>
+                </section>
+
+                <!-- Section -->
+                <section>
+                    <header class="major">
+                        <h2>About Us</h2>
+                    </header>
+                    <p>This is a python only site, developed to help you solve crosswords, anagrams and find all those
+                        words within a word. It is currently based on British English, but more varioations of English
+                        are soon to be added.</p>
+                    <ul class="contact">
+                        <li class="icon solid fa-envelope"><a
+                                href="mailto:info@wordcenter.co.uk">info@wordcenter.co.uk</a></li>
+                        <li class="icon solid fa-home">Redditch, Worcestershire, UK</li>
+                    </ul>
+                </section>
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">&copy; 2020 - Present, Word Center. All rights reserved.</p>
+                </footer>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/browser.min.js"></script>
+    <script src="/static/js/breakpoints.min.js"></script>
+    <script src="/static/js/util.js"></script>
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+</html>

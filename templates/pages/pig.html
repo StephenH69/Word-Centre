@@ -1,0 +1,49 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Pig Latin Converter | Word Center{% endblock %}
+{% block meta %}<meta name="description" content="Quick and easy Pig Latin converter, translate English into Pig Latin quickly">{% endblock %}
+{% block content %}
+
+<section>
+    <header class="main">
+        <h1>Pig Latin Converter</h1>
+    </header>
+    <!-- Content -->
+    <h2 id="content">What is Pig Latin?</h2>
+    <p>It would be nice if Pig Latin was a genuine language and in some ways it is. But in reality it is a language game where English words are altered by moving the first letter to the end of the word and adding on a syllable to the end of the word.<br><br>There are a variety of methods to accomplish this translation, with some methods dating back to the 1500s. We use the classic 'ay' technique, but there are many others.<br><br>Enter the phrase you want to translate in the box below and click submit.</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+
+    {% for message in messages %}
+    {% if "Error" not in message[1]: %}
+    <h3>Results</h3>
+        <p><strong>You entered this phrase:<br>{{ entry }}</strong></p>
+        <p><strong>Translation:<br>{{ translation }}</strong></p>
+
+    {% endif %}
+
+    {% if "Error" in message[1]: %}
+    <h3>Results</h3>
+        <p><strong>Error: </strong> {{ message[1] }}</p>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <h3>Enter your phrase:</h3>
+    <form action="" method="post" role="form">
+        <div class="row gtr-uniform">
+            <!-- Break -->
+            <div class="col-12">
+                <textarea type="text" class="form-control" id="phrase" name="phrase" placeholder="Enter the phrase you want to translate:" rows="6"></textarea>
+            </div>
+            <!-- Break -->
+            <div class="col-12">
+                <ul class="actions">
+                    <li><input type="submit" value="Submit" class="primary" /></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</section>
+{% endblock %}

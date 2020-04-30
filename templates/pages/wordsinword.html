@@ -1,0 +1,47 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Find All The Words In A Word | Word Center{% endblock %}
+{% block meta %}
+<meta name="description" content="Find all the words within another word, or all the words in a jumble of letters. Great for word puzzlers">
+{% endblock %}
+{% block content %}
+<section>
+  <header class="main">
+    <h1>Find All The Words In A Word</h1>
+  </header>
+  <!-- Content -->
+  <h2 id="content">Find all the words?</h2>
+  <p>Are you a word puzzler, or just curious what words can be found in other words? This app will quickly give you all the words within a given set of letters.<br><br>Enter the letters you have in the box below and see all the possible answers.</p>
+
+      <h3>Enter your letters:</h3>
+      <form action="" method="post" role="form">
+        <div class="row gtr-uniform">
+
+          <div class="col-12"> 
+            <input type="text" class="form-control" id="phrase" name="phrase" placeholder="Enter your letters:">
+          </div> 
+          <div class="col-12">
+            <ul class="actions">
+              <li><input type="submit" value="Submit" class="primary" /></li>
+            </ul>
+          </div>
+       </div>
+      </form>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <h3>There are {{ totalresults }} results for {{ entry }}</h3>
+      <div class="box">
+        {% for message in messages %}
+        {% if "Error" not in message[1]: %}
+        {{ answers }}
+      </div>
+      {% endif %}
+      {% if "Error" in message[1]: %}
+      <p><strong>Error: </strong> {{ message[1] }}</p>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    <!-- </div>
+  </div> -->
+</section>
+{% endblock %}
