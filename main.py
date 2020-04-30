@@ -33,7 +33,7 @@ def pig():
     if request.method == 'POST':
         phrase = request.form['phrase']
         if form.validate():
-            defs.write_to_disk('Pig Latin', phrase)
+            #defs.write_to_disk('Pig Latin', phrase)
             flash('Hello: {}'.format(phrase))
             pig = defs.pig_it(phrase)
             return render_template('pages/pig.html', form=form, translation=pig, entry=phrase)
@@ -49,7 +49,7 @@ def missing():
     if request.method == 'POST':
         phrase = request.form['phrase']
         if form.validate():
-            defs.write_to_disk('Missing Letters', phrase)
+            #defs.write_to_disk('Missing Letters', phrase)
             flash('Hello: {}'.format(phrase))
             potentialAnswers = defs.missing_letter(phrase)
             return render_template('pages/missing_letters.html', form=form, answers=potentialAnswers, entry=phrase)
@@ -65,7 +65,7 @@ def anagram_solver():
     if request.method == 'POST':
         phrase = request.form['phrase']
         if form.validate():
-            defs.write_to_disk('Anagram Solver', phrase)
+            #defs.write_to_disk('Anagram Solver', phrase)
             flash('Hello: {}'.format(phrase))
             potentialAnswers = defs.anagram_s(phrase)
             return render_template('pages/anagram.html', form=form, answers=potentialAnswers, entry=phrase)
@@ -81,7 +81,7 @@ def wordsinword():
     if request.method == 'POST':
         phrase = request.form['phrase']
         if form.validate():
-            defs.write_to_disk('Words in a Word', phrase)
+            #defs.write_to_disk('Words in a Word', phrase)
             flash('Hello: {}'.format(phrase))
             potentialAnswers = defs.words_in_word(phrase)
             currentLength = 0
