@@ -84,30 +84,30 @@ def wordsinword():
             #defs.write_to_disk('Words in a Word', phrase)
             flash('Hello: {}'.format(phrase))
             potentialAnswers = defs.words_in_word(phrase)
-            currentLength = 0
-            returnList = ""
-            i = 0
-            for answer in potentialAnswers:
-                i += 1
-                if (len(answer) > currentLength):
-                    currentLength = len(answer)
-                    if i == 1:
-                        returnList = returnList + "<strong>" + \
-                            str(len(
-                                answer)) + " letter words</strong><ul class='wordsinword'><li>" + answer + "</li>"
-                    else:
-                        returnList = returnList + "</ul><strong>" + \
-                            str(currentLength) + \
-                            " letter words</strong><ul class='wordsinword'><li>" + answer + "</li>"
-                else:
-                    returnList = returnList + "<li>" + answer + "</li>"
-                if i == len(potentialAnswers):
-                    returnList = returnList + "</ul>"
-            returnMessage = Markup(returnList)
+            i = len(potentialAnswers)
+            returnMessage = defs.results_formating(potentialAnswers)
             return render_template('pages/wordsinword.html', form=form, answers=returnMessage, entry=phrase, totalresults=i)
         else:
             flash('Error: All Fields are Required')
     return render_template('pages/wordsinword.html', form=form)
+
+
+@app.route("/wordsstartingwith", methods=['GET', 'POST'])
+def wordsstartingwith():
+    form = ReusableFormLetters(request.form)
+    # print(form.errors)
+    if request.method == 'POST':
+        phrase = request.form['phrase'].lower()
+        if form.validate():
+            #defs.write_to_disk('Words in a Word', phrase)
+            flash('Hello: {}'.format(phrase))
+            potentialAnswers = defs.words_starting_with(phrase)          
+            i = len(potentialAnswers)
+            returnMessage = defs.results_formating(potentialAnswers)
+            return render_template('pages/wordsstartingwith.html', form=form, answers=returnMessage, entry=phrase, totalresults=i)
+        else:
+            flash('Error: All Fields are Required')
+    return render_template('pages/wordsstartingwith.html', form=form)
 
 
 if __name__ == "__main__":
