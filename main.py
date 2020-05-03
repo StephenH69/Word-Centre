@@ -99,7 +99,6 @@ def wordsstartingwith():
     if request.method == 'POST':
         phrase = request.form['phrase'].lower()
         if form.validate():
-            #defs.write_to_disk('Words in a Word', phrase)
             flash('Hello: {}'.format(phrase))
             potentialAnswers = defs.words_starting_with(phrase)          
             i = len(potentialAnswers)
@@ -108,6 +107,40 @@ def wordsstartingwith():
         else:
             flash('Error: All Fields are Required')
     return render_template('pages/wordsstartingwith.html', form=form)
+
+
+@app.route("/wordscontaining", methods=['GET', 'POST'])
+def wordscontaining():
+    form = ReusableFormLetters(request.form)
+    # print(form.errors)
+    if request.method == 'POST':
+        phrase = request.form['phrase'].lower()
+        if form.validate():
+            flash('Hello: {}'.format(phrase))
+            potentialAnswers = defs.words_containing(phrase)          
+            i = len(potentialAnswers)
+            returnMessage = defs.results_formating(potentialAnswers)
+            return render_template('pages/wordscontaining.html', form=form, answers=returnMessage, entry=phrase, totalresults=i)
+        else:
+            flash('Error: All Fields are Required')
+    return render_template('pages/wordscontaining.html', form=form)
+
+
+@app.route("/wordsending", methods=['GET', 'POST'])
+def wordsending():
+    form = ReusableFormLetters(request.form)
+    # print(form.errors)
+    if request.method == 'POST':
+        phrase = request.form['phrase'].lower()
+        if form.validate():
+            flash('Hello: {}'.format(phrase))
+            potentialAnswers = defs.words_ending(phrase)          
+            i = len(potentialAnswers)
+            returnMessage = defs.results_formating(potentialAnswers)
+            return render_template('pages/wordsending.html', form=form, answers=returnMessage, entry=phrase, totalresults=i)
+        else:
+            flash('Error: All Fields are Required')
+    return render_template('pages/wordsending.html', form=form)
 
 
 if __name__ == "__main__":

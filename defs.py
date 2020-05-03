@@ -4,6 +4,7 @@ from flask import Markup
 
 
 def sorting(lst):
+    lst.sort()
     lst.sort(key=len)
     return lst
 
@@ -81,8 +82,49 @@ def words_starting_with(text):
     with open("files/english3.txt", 'r') as f:
         dictionary = f.read()
         f.close
-    searchString = wordInput + "\w+"
-    theAnswers = re.findall(searchString, dictionary)
+    searchString1 = wordInput
+    searchString2 = wordInput + "\w+"
+    theAnswers1 = re.findall(searchString1, dictionary)
+    theAnswers2 = re.findall(searchString2, dictionary)
+    theAnswers = theAnswers1 + theAnswers2
+    newTheAnswers = []
+    for j in theAnswers:
+        if j not in newTheAnswers:
+            newTheAnswers.append(j)
+    return sorting(newTheAnswers)
+
+
+def words_containing(text):
+    wordInput = str(text)
+    with open("files/english3.txt", 'r') as f:
+        dictionary = f.read()
+        f.close
+    searchString1 = wordInput
+    searchString2 = wordInput + "\w+"
+    searchString3 = "\w+" + wordInput
+    searchString4 = "\w+" + wordInput + "\w+"
+    theAnswers1 = re.findall(searchString1, dictionary)
+    theAnswers2 = re.findall(searchString2, dictionary)
+    theAnswers3 = re.findall(searchString3, dictionary)
+    theAnswers4 = re.findall(searchString4, dictionary)
+    theAnswers = theAnswers1 + theAnswers2 + theAnswers3 + theAnswers4
+    newTheAnswers = []
+    for j in theAnswers:
+        if j not in newTheAnswers:
+            newTheAnswers.append(j)
+    return sorting(newTheAnswers)
+
+
+def words_ending(text):
+    wordInput = str(text)
+    with open("files/english3.txt", 'r') as f:
+        dictionary = f.read()
+        f.close
+    searchString1 = wordInput
+    searchString2 = "\w+" + wordInput
+    theAnswers1 = re.findall(searchString1, dictionary)
+    theAnswers2 = re.findall(searchString2, dictionary)
+    theAnswers = theAnswers1 + theAnswers2
     newTheAnswers = []
     for j in theAnswers:
         if j not in newTheAnswers:
